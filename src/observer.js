@@ -8,12 +8,16 @@ function observer(obj) {
 function defineReactive(obj, key, val) {
     Object.defineProperty(obj, key, {
         get() {
+            console.log('get', val);
+
             return val
         },
         set(newVal) {
             if (val !== newVal) {
+                console.log('set', newVal);
+
                 val = newVal
-                document.body.offsetHeight
+
             }
         }
     })
@@ -23,3 +27,6 @@ let obj = {
     bar: 1,
     a: 3
 }
+observer(obj)
+obj.bar
+obj.bar = 10
