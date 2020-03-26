@@ -31,9 +31,9 @@ class Store {
         this._mutations = options.mutations
         this._actions = options.actions
         this._wrapGetters = options.getters
-        Vut.util.defineReactive(this, 'getters', {
+        Vue.util.defineReactive(this, 'getters', {
             get() {
-                return
+                return 'a'
             }
         })
 
