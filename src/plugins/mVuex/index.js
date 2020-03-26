@@ -24,19 +24,68 @@ let Vue
 // }
 
 class Store {
-    constructor(options) {
-        // 绑定state
+    // constructor(options) {
+    //     // 绑定state
 
-        Vue.util.defineReactive(this, 'state', options.state)
+    //     // Vue.util.defineReactive(this, 'state', options.state)
+    //     this._mutations = options.mutations
+    //     this._actions = options.actions
+
+    //     this._wrapGetters = options.getters
+    //     this.getters = {}
+    //     let computed = {}
+    //     let store = this
+    //     Object.keys(this._wrapGetters).forEach(key => {
+    //         let fn = store._wrapGetters[key]
+    //         computed[key] = function () {
+    //             return fn(store.state)
+    //         }
+    //         Object.defineProperty(this.getters, key, {
+    //             get: () => {
+    //                 return this._vm[key]
+    //             }
+    //         })
+    //     })
+
+    //     this._vm = new Vue({
+    //         data: {
+    //             $$state: options.state
+    //         },
+    //         computed
+    //     })
+
+    // }
+    // get state() {
+    //     return this._vm._data.$$state
+    // }
+    // set state(v) {
+    //     console.error('error')
+    // }
+    constructor(options) {
         this._mutations = options.mutations
         this._actions = options.actions
+        Vue.util.defineReactive(this, 'state', options.state)
+
         this._wrapGetters = options.getters
-        Vue.util.defineReactive(this, 'getters', {
-            get() {
-                return 'a'
+        this.getters = {}
+        let computed = {}
+
+        Object.keys(this._wrapGetters).forEach(key => {
+            let fn = this._wrapGetters[key]
+            computed[key] = () => {
+                return fn(this.state)
             }
+            Object.defineProperty(this.getters, key, {
+                get: () => {
+                    return this._vm[key]
+                }
+            })
+
         })
 
+        this._vm = new Vue({
+            computed
+        })
     }
     commit = (type, payload) => {
         let fn = this._mutations[type]

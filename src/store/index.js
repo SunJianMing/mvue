@@ -21,6 +21,11 @@ const store = new Mvuex.Store({
                 commit('add')
             }, 1000);
         }
+    },
+    getters: {
+        dobCount(state) {
+            return state.count * 4
+        }
     }
 })
 export default store
