@@ -13,7 +13,7 @@ const store = new Mvuex.Store({
             state.count++
         }
     },
-    ations: {
+    actions: {
         asyncAdd({
             commit
         }) {
