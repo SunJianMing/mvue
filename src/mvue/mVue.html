@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./observe.js"></script>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{count}}</p>
+      {{count}}
+      <p m-text="count" @click="onClick"></p>
+    </div>
+
+    <script>
+      const App = new Mvue({
+        el: "#app",
+        data: {
+          count: 1
+        },
+        methods: {
+          onClick() {
+            console.log(this.count++);
+          }
+        }
+      });
+
+      setInterval(() => {
+        // App.count++;
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{count}}
+      <p>{{count}}</p>
+      <p m-text="count"></p>
+      <p m-on:click="onClick">{{count}}</p>
+    </div>
+    <script>
+      const App = new Mvue({
+        el: "#app",
+        data: {
+          count: 1,
+          da: {
+            a: 1
+          },
+          arr: [1]
+        },
+        methods: {
+          onClick() {
+            this.count++;
+          }
+        }
+      });
+      setInterval(() => {
+        // App.count++;
+        // console.log(App);
+      }, 1000);
+    </script>
+  </body>
+</html>

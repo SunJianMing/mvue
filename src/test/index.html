@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./observer.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    let obj = { foo: 1, ob: { a: 10 }, arr: [1, 2, { c: 3 }] };
+    new Observe(obj);
+    // obj.arr.push(1);
+    // obj.arr;
+    // Observe.$set(obj, "d", "d");
+    // obj.d;
+    // obj.d = 20;
+    obj.arr[2].c = 100;
+  </script>
+</html>
