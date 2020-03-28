@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{count}}</p>
+      <p m-text="count"></p>
+      <h3 m-html="desc"></h3>
+      <input type="text" m-mode="desc" />
+      <p @click="onClick">{{count}}</p>
+    </div>
+  </body>
+  <script>
+    const app = new Mvue({
+      el: "#app",
+      data: {
+        count: 1,
+        desc: "<span style='color:red'>hello</span>"
+      },
+      methods: {
+        onClick() {
+          this.count++;
+        }
+      }
+    });
+
+    // console.log(app.$data.count);
+  </script>
+</html>
